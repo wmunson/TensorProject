@@ -9,8 +9,13 @@ import spacy
 import pandas as pd
 
 
-title = {'Apple':'0.5','Computer':'0.6','Tree':'0.4','Condensation':'0.5','Heat':'0.4'}
+title = {'Apple':'middle','Computer':'good','Tree':'bad','Condensation':'middle','Heat':'bad'}
 rows=[]
+# labels = ['label','text']
+# with open('train.csv', "a") as output:
+# 	    writer = csv.writer(output, lineterminator='\n')
+# 	    writer.writerow(labels)
+# 	    output.close() 
 for key, value in title.items():
 	url = 'https://en.wikipedia.org/wiki/'+key
 
