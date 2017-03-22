@@ -9,7 +9,7 @@ import spacy
 import pandas as pd
 
 
-title = {'Apple':'middle','Computer':'good','Tree':'bad','Condensation':'middle','Heat':'bad'}
+title = {'Apple':'5','Computer':'7','Tree':'3','Condensation':'5','Heat':'3'}
 rows=[]
 # labels = ['label','text']
 # with open('train.csv', "a") as output:
