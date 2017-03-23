@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 from config import DevConfig
-
-
+from model import make_test_csv, run_analysis
+import json
 
 
 
@@ -22,9 +22,15 @@ app.config.from_object("config.DevConfig")
 def show_homepage():
 	return render_template('main.html')
 
-@app.route('/search', methods=['GET'])
-def show_search():
-	pass
+@app.route('/analyze', methods=['GET'])
+def show_results():
+	data = request.args.get('link')
+	count = make_test_csv(data)
+	# print(type(count))
+	result = run_analysis()
+	# print(type(result))
+	obj={'words':count,'result':float(result)}
+	return json.dumps(obj)
 
 # @app.route
 
