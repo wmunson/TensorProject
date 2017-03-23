@@ -1,2 +1,2 @@
-model_checkpoint_path: "/home/wesley/Desktop/TensorProject/TensorProject/tensor/test_seqgen.tflearn"
-all_model_checkpoint_paths: "/home/wesley/Desktop/TensorProject/TensorProject/tensor/test_seqgen.tflearn"
+model_checkpoint_path: "/home/wesley/Desktop/TensorProject/TensorProject/tensor/model"
+all_model_checkpoint_paths: "/home/wesley/Desktop/TensorProject/TensorProject/tensor/model"

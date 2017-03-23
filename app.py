@@ -20,12 +20,13 @@ app.config.from_object("config.DevConfig")
 
 @app.route('/', methods=['GET'])
 def show_homepage():
-	return render_template('home.html')
+	return render_template('main.html')
 
+@app.route('/search', methods=['GET'])
+def show_search():
+	pass
 
-
-
-
+# @app.route
 
 
 

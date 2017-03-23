@@ -5,16 +5,33 @@
 	<header>
 		<title> Swiki </title>
 		<!-- STUFF YOU NEED FOR MATERIALIZE BELOW -->
-		<link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.css">
-		<link rel="stylesheet" href="../static/css/home.css">
+		<!-- <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.css"> -->
+		<link rel="stylesheet" href="../static/css/main.css">
 	</header>
 
 
 	<body>
-	<h1> Hello World </h1>
+		<div class='container'>
+			<div class='colorBar'> </div>
+			<div class='logo'> Swiki</div>
+			<div class='searchBar'>
+				<form class='form'>
+					<input class='input' name='title' type='text' placeholder='Example: "Yankees"'>
+					<input type="submit" class="button">
+
+				</form>
+			</div>
+			<div class='bottom info lists'>
+				<p class='descript'>Welcome to Swiki. Search for Wikipedia Articles and see the sentiment analysis results.
+			</div>
 
 
+		</div>	
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="../static/js/home.js"> </script>
 	</body>
 
 </html>
+

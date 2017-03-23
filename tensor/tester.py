@@ -30,7 +30,7 @@ for t in df['text']:
   text.append(t)
 
 d=dict(zip(num,text))
-
+text_len=len(df['text'])
 # print (d)
 
 # Fill null values with empty strings
@@ -49,28 +49,29 @@ totalY = df.num
 
 # # Convert the strings in the input into integers corresponding to the dictionary positions
 # # Data is automatically padded so we need to pad_sequences manually
-vocab_proc = VocabularyProcessor(5)
+vocab_proc = VocabularyProcessor(10)
 totalX = np.array(list(vocab_proc.fit_transform(totalX)))
-
+seed = np.array(list(vocab_proc.fit_transform(seed)))
 # # We will have 11 classes in total for prediction, indices from 0 to 10
 vocab_proc2 = VocabularyProcessor(1)
 totalY = np.array(list(vocab_proc2.fit_transform(totalY))) - 1
 # # Convert the indices into 11 dimensional vectors
-totalY = to_categorical(totalY, nb_classes=5)
+totalY = to_categorical(totalY, nb_classes=10)
 
 # Split into training and testing data
 # trainX, testX, trainY, testY = train_test_split(totalX, totalY, test_size=0.1)
-# totalX = pad_sequences(totalX, maxlen=100, value=0.)
+totalX = pad_sequences(totalX, maxlen=100, value=0.)
+seed = pad_sequences(seed, maxlen=100, value=0.)
 # testX = pad_sequences(testX, maxlen=100, value=0.)
 # print(trainX)
 # print(trainY)
 # print(testX)
 # print(testY)
 
-net = tflearn.input_data(shape=[None, 5])
+net = tflearn.input_data([None,100])
 
 
-net = tflearn.embedding(net, input_dim=10000, output_dim=256)
+net = tflearn.embedding(net, input_dim=12000, output_dim=256)
 
 
 net = tflearn.lstm(net, 256, dropout=0.9, return_seq=True)
@@ -78,14 +79,16 @@ net = tflearn.lstm(net, 256, dropout=0.9, return_seq=True)
 net = tflearn.lstm(net, 256, dropout=0.9)
 net = tflearn.dropout(net, 0.5)
 # # The output is then sent to a fully connected layer that would give us our final 11 classes
-net = tflearn.fully_connected(net, 11, activation='softmax')
+net = tflearn.fully_connected(net, 10, activation='softmax')
 # # We use the adam optimizer instead of standard SGD since it converges much faster
 net = tflearn.regression(net, optimizer='adam', learning_rate=0.001, loss='categorical_crossentropy')
 model = tflearn.DNN(net, tensorboard_verbose=0)
 model.fit(totalX, totalY, validation_set=0.1, show_metric=True, batch_size=None, n_epoch=20)
 
-model = tflearn.helpers.evaluator.Evaluator(model)
-model.predict({net:seed})
+# model = tflearn.helpers.evaluator.Evaluator(model)
+print(model.predict_label(seed)[0][0])
+# print(model.Predictor)
+# model.save('model')
 # # Train the network
 
 
