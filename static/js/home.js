@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
 	const makeList = function(title){
@@ -28,7 +29,7 @@ $(document).ready(function(){
 					for(i=0;i<len;i++){
 						var inp=$("<button type='button' class='listButton' data-id='"+i+"'>Analyze</button>");
 						console.log(inp)
-						var div=$("<div class='listDiv remove'><li class='list'><h3>"+titles[i]+"</h3><p>"+descriptions[i]+"</p><a id='"+i+"' href="+links[i]+">Link to:</a></li></div>");
+						var div=$("<div class='listDiv remove'><li class='list'><h3>"+titles[i]+"</h3><p>"+descriptions[i]+"</p><a id='"+i+"' href="+links[i]+" target='_blank'>Link to:</a></li></div>");
 						ul.append(div);
 						div.append(inp);
 						makeEvent(inp);
@@ -84,11 +85,11 @@ $(document).ready(function(){
 						$('.loader').remove()
 						$('.h').remove()
 						
-						var descDiv = $('<div id="titleDiv"><h2class="h2">Sentiment Rating:</h2> <h3 class="h3">0~Negative, 100~Positive:</h3></div>');
+						var descDiv = $('<div id="titleDiv"><h2 class="h2">Sentiment Rating:</h2> <h3 class="h3">0~Negative, 100~Positive:</h3></div>');
 						var graphDiv = $('<div id="chart"></div>');
 						var countDiv = $('<div id="count"></div>');
 						var resultDiv = $('<div class="results"></div>');
-						count = $('<h2class="h2">Words in Article:</h2><h3 class="h3">'+result['words']+'</h3>');
+						count = $('<h2 class="h2">Words in Article:</h2><h3 class="h3">'+result['words']+'</h3>');
 						countDiv.append(count);
 						descDiv.append(graphDiv);
 						resultDiv.append(descDiv);
@@ -114,7 +115,7 @@ $(document).ready(function(){
 		});
 
 	const makeGraph = function(val){
-	var value = val*7;
+	var value = val*9;
 	require(["d3", "c3"], function(d3, c3) {
 
 	var chart = c3.generate({
