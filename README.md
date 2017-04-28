@@ -11,7 +11,8 @@ ________________________________________________________________________________
 **Tehcnologies:**
 
 -Server side - Python, Flask.
-	-Analysis - BeautifulSoup, Pandas, TFLearn. 
+	
+   -Analysis - BeautifulSoup, Pandas, TFLearn. 
 
 -Front end - HTML, CSS, JavaScript, C3.JS (data visualization).
  
